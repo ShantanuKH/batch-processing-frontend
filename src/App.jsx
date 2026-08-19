@@ -1483,7 +1483,11 @@ function App() {
 
             </footer>
 
-            {showAbout && (
+
+
+ {/* About Section Information */}
+
+{showAbout && (
     <div
         className="modal-overlay"
         onClick={() => setShowAbout(false)}
@@ -1494,21 +1498,34 @@ function App() {
             onClick={(e) => e.stopPropagation()}
         >
 
+            {/* =====================================================
+                HEADER
+            ====================================================== */}
+
             <div className="modal-header">
 
                 <div>
+
                     <span className="eyebrow">
-                        ABOUT THE APPLICATION
+                        PROJECT DOCUMENTATION
                     </span>
 
                     <h2>
                         Employee Batch Processing
                     </h2>
+
+                    <p className="modal-subtitle">
+                        A production-style Spring Boot and Spring Batch
+                        prototype for reliable, fault-tolerant employee
+                        data processing and execution monitoring.
+                    </p>
+
                 </div>
 
                 <button
                     className="modal-close"
                     onClick={() => setShowAbout(false)}
+                    aria-label="Close documentation"
                 >
                     ×
                 </button>
@@ -1516,208 +1533,1036 @@ function App() {
             </div>
 
 
+            {/* =====================================================
+                DOCUMENTATION CONTENT
+            ====================================================== */}
+
             <div className="modal-content">
 
-                <div className="about-block">
 
-                    <h3>What does this application do?</h3>
+                {/* =================================================
+                    01 — PROJECT OVERVIEW
+                ================================================= */}
+
+                <section className="doc-section">
+
+                    <span className="doc-number">
+                        01 — PROJECT OVERVIEW
+                    </span>
+
+                    <h3>
+                        Why was this application created?
+                    </h3>
 
                     <p>
-                        This application is a Spring Boot based batch
-                        processing system designed to process employee
-                        records efficiently in batches.
+                        Employee data is often received in bulk through
+                        files such as CSVs. Processing these records
+                        manually or through simple database scripts can
+                        become difficult when the dataset grows or when
+                        individual records contain invalid information.
                     </p>
 
                     <p>
-                        It reads employee data, validates each record,
-                        processes valid records, and safely handles
-                        records that cannot be processed.
+                        This prototype demonstrates how that traditional
+                        workflow can be transformed into an automated,
+                        reliable and observable batch-processing pipeline.
                     </p>
 
-                </div>
+                    <div className="highlight-box">
+
+                        <strong>
+                            The primary objective
+                        </strong>
+
+                        <span>
+                            Process large numbers of employee records
+                            automatically while validating data, handling
+                            failures safely, preserving error information
+                            and providing complete execution visibility.
+                        </span>
+
+                    </div>
+
+                </section>
 
 
-                <div className="about-block">
+                {/* =================================================
+                    02 — WHAT THE SYSTEM DOES
+                ================================================= */}
 
-                    <h3>How does it work?</h3>
+                <section className="doc-section">
 
-                    <div className="workflow">
+                    <span className="doc-number">
+                        02 — WHAT THE SYSTEM DOES
+                    </span>
 
-                        <div className="workflow-step">
+                    <h3>
+                        End-to-end batch processing
+                    </h3>
+
+                    <div className="process-grid">
+
+                        <div className="process-card">
+
+                            <div className="process-icon">
+                                01
+                            </div>
+
+                            <div>
+                                <strong>
+                                    Read
+                                </strong>
+
+                                <p>
+                                    Reads employee records from a CSV
+                                    input file using Spring Batch.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div className="process-card">
+
+                            <div className="process-icon">
+                                02
+                            </div>
+
+                            <div>
+                                <strong>
+                                    Validate
+                                </strong>
+
+                                <p>
+                                    Validates employee ID, name,
+                                    department and date information.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div className="process-card">
+
+                            <div className="process-icon">
+                                03
+                            </div>
+
+                            <div>
+                                <strong>
+                                    Process
+                                </strong>
+
+                                <p>
+                                    Parses dates and calculates the
+                                    employee duration in days.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div className="process-card">
+
+                            <div className="process-icon">
+                                04
+                            </div>
+
+                            <div>
+                                <strong>
+                                    Write
+                                </strong>
+
+                                <p>
+                                    Stores successfully processed
+                                    employee records in PostgreSQL.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div className="process-card">
+
+                            <div className="process-icon">
+                                05
+                            </div>
+
+                            <div>
+                                <strong>
+                                    Handle Errors
+                                </strong>
+
+                                <p>
+                                    Invalid records are skipped without
+                                    stopping the complete batch.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div className="process-card">
+
+                            <div className="process-icon">
+                                06
+                            </div>
+
+                            <div>
+                                <strong>
+                                    Monitor
+                                </strong>
+
+                                <p>
+                                    Execution statistics, errors and
+                                    success rates are exposed through APIs.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                {/* =================================================
+                    03 — PROCESSING LOGIC
+                ================================================= */}
+
+                <section className="doc-section">
+
+                    <span className="doc-number">
+                        03 — PROCESSING LOGIC
+                    </span>
+
+                    <h3>
+                        What happens to an employee record?
+                    </h3>
+
+                    <div className="workflow-large">
+
+                        <div className="workflow-large-step">
+
+                            <span>
+                                01
+                            </span>
+
+                            <div>
+                                <strong>
+                                    CSV Input
+                                </strong>
+
+                                <p>
+                                    Employee data enters the system
+                                    through the configured CSV file.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div className="workflow-connector" />
+
+
+                        <div className="workflow-large-step">
+
+                            <span>
+                                02
+                            </span>
+
+                            <div>
+                                <strong>
+                                    Validation
+                                </strong>
+
+                                <p>
+                                    Employee ID, name, department and
+                                    date fields are checked for validity.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div className="workflow-connector" />
+
+
+                        <div className="workflow-large-step">
+
+                            <span>
+                                03
+                            </span>
+
+                            <div>
+                                <strong>
+                                    Business Calculation
+                                </strong>
+
+                                <p>
+                                    Start and end dates are parsed and
+                                    the employee's duration is calculated
+                                    using the date difference.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div className="workflow-connector" />
+
+
+                        <div className="workflow-large-step">
+
+                            <span>
+                                04
+                            </span>
+
+                            <div>
+                                <strong>
+                                    Database Persistence
+                                </strong>
+
+                                <p>
+                                    Valid records are inserted or updated
+                                    in PostgreSQL using an upsert operation.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div className="workflow-connector" />
+
+
+                        <div className="workflow-large-step">
+
+                            <span>
+                                05
+                            </span>
+
+                            <div>
+                                <strong>
+                                    Monitoring
+                                </strong>
+
+                                <p>
+                                    Execution details, record counts,
+                                    failures and success rates become
+                                    available through the dashboard.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                {/* =================================================
+                    04 — VALIDATION
+                ================================================= */}
+
+                <section className="doc-section">
+
+                    <span className="doc-number">
+                        04 — DATA VALIDATION
+                    </span>
+
+                    <h3>
+                        What validations are performed?
+                    </h3>
+
+                    <div className="validation-grid">
+
+                        <div>
+                            <span>✓</span>
+                            <strong>Employee ID</strong>
+                            <p>
+                                Must contain a valid positive value.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>✓</span>
+                            <strong>Employee Name</strong>
+                            <p>
+                                Cannot be null or empty.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>✓</span>
+                            <strong>Department</strong>
+                            <p>
+                                Cannot be null or empty.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>✓</span>
+                            <strong>Start Date</strong>
+                            <p>
+                                Must follow yyyy-MM-dd format.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>✓</span>
+                            <strong>End Date</strong>
+                            <p>
+                                Must contain a valid date when provided.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>✓</span>
+                            <strong>Date Relationship</strong>
+                            <p>
+                                End date cannot occur before start date.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                {/* =================================================
+                    05 — FAULT TOLERANCE
+                ================================================= */}
+
+                <section className="doc-section">
+
+                    <span className="doc-number">
+                        05 — FAULT TOLERANCE
+                    </span>
+
+                    <h3>
+                        What happens when a record is invalid?
+                    </h3>
+
+                    <p>
+                        A major objective of this prototype is to
+                        demonstrate that one bad record should not
+                        necessarily stop the entire batch.
+                    </p>
+
+                    <div className="fault-box">
+
+                        <div className="fault-item">
+
+                            <span className="fault-icon">
+                                !
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Invalid record detected
+                                </strong>
+
+                                <p>
+                                    The processor throws an
+                                    <code>
+                                        InvalidEmployeeDataException
+                                    </code>
+                                    when validation fails.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div className="fault-item">
+
+                            <span className="fault-icon">
+                                ↳
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Record is skipped
+                                </strong>
+
+                                <p>
+                                    Spring Batch fault tolerance allows
+                                    the processing pipeline to continue
+                                    with the remaining records.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div className="fault-item">
+
+                            <span className="fault-icon">
+                                ✓
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Error is persisted
+                                </strong>
+
+                                <p>
+                                    Error details are stored separately
+                                    and associated with the batch execution.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                {/* =================================================
+                    06 — CHUNK PROCESSING
+                ================================================= */}
+
+                <section className="doc-section">
+
+                    <span className="doc-number">
+                        06 — CHUNK PROCESSING
+                    </span>
+
+                    <h3>
+                        Why Spring Batch?
+                    </h3>
+
+                    <p>
+                        The step is configured using chunk-oriented
+                        processing. In this prototype, records are
+                        processed in chunks of five.
+                    </p>
+
+                    <div className="metric-row">
+
+                        <div className="metric-card">
+
+                            <strong>
+                                5
+                            </strong>
+
+                            <span>
+                                Records per chunk
+                            </span>
+
+                        </div>
+
+
+                        <div className="metric-card">
+
+                            <strong>
+                                ✓
+                            </strong>
+
+                            <span>
+                                Transaction management
+                            </span>
+
+                        </div>
+
+
+                        <div className="metric-card">
+
+                            <strong>
+                                ↻
+                            </strong>
+
+                            <span>
+                                Fault tolerance
+                            </span>
+
+                        </div>
+
+
+                        <div className="metric-card">
+
+                            <strong>
+                                100%
+                            </strong>
+
+                            <span>
+                                Execution visibility
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <p className="small-note">
+                        Chunk processing allows the application to process
+                        records in manageable groups instead of loading and
+                        committing the entire dataset as one operation.
+                    </p>
+
+                </section>
+
+
+                {/* =================================================
+                    07 — DATABASE
+                ================================================= */}
+
+                <section className="doc-section">
+
+                    <span className="doc-number">
+                        07 — DATABASE & PERSISTENCE
+                    </span>
+
+                    <h3>
+                        What is stored?
+                    </h3>
+
+                    <div className="database-grid">
+
+                        <div className="database-card">
+
+                            <span className="database-icon">
+                                DB
+                            </span>
+
+                            <strong>
+                                employees
+                            </strong>
+
+                            <p>
+                                Stores successfully processed employee
+                                records, dates and calculated duration.
+                            </p>
+
+                        </div>
+
+
+                        <div className="database-card">
+
+                            <span className="database-icon">
+                                ER
+                            </span>
+
+                            <strong>
+                                batch_error
+                            </strong>
+
+                            <p>
+                                Stores skipped records, error type,
+                                error message and execution ID.
+                            </p>
+
+                        </div>
+
+
+                        <div className="database-card">
+
+                            <span className="database-icon">
+                                EX
+                            </span>
+
+                            <strong>
+                                Spring Batch Metadata
+                            </strong>
+
+                            <p>
+                                Stores job executions, step executions,
+                                status, read/write counts and transactions.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                {/* =================================================
+                    08 — REST API
+                ================================================= */}
+
+                <section className="doc-section">
+
+                    <span className="doc-number">
+                        08 — REST API LAYER
+                    </span>
+
+                    <h3>
+                        Backend APIs exposed by the application
+                    </h3>
+
+                    <div className="api-list">
+
+                        <div className="api-row">
+                            <span className="method post">
+                                POST
+                            </span>
+
+                            <code>
+                                /api/batch/run
+                            </code>
+
+                            <p>
+                                Starts a new batch execution.
+                            </p>
+                        </div>
+
+
+                        <div className="api-row">
+                            <span className="method get">
+                                GET
+                            </span>
+
+                            <code>
+                                /api/batch/executions
+                            </code>
+
+                            <p>
+                                Returns batch execution history.
+                            </p>
+                        </div>
+
+
+                        <div className="api-row">
+                            <span className="method get">
+                                GET
+                            </span>
+
+                            <code>
+                                /api/batch/status/{"{executionId}"}
+                            </code>
+
+                            <p>
+                                Returns execution and step statistics.
+                            </p>
+                        </div>
+
+
+                        <div className="api-row">
+                            <span className="method get">
+                                GET
+                            </span>
+
+                            <code>
+                                /api/batch/executions/{"{executionId}"}
+                            </code>
+
+                            <p>
+                                Returns detailed execution information.
+                            </p>
+                        </div>
+
+
+                        <div className="api-row">
+                            <span className="method get">
+                                GET
+                            </span>
+
+                            <code>
+                                /api/batch/executions/{"{executionId}"}/summary
+                            </code>
+
+                            <p>
+                                Returns processing summary and success rate.
+                            </p>
+                        </div>
+
+
+                        <div className="api-row">
+                            <span className="method get">
+                                GET
+                            </span>
+
+                            <code>
+                                /api/batch/executions/{"{executionId}"}/errors
+                            </code>
+
+                            <p>
+                                Returns errors captured during processing.
+                            </p>
+                        </div>
+
+
+                        <div className="api-row">
+                            <span className="method get">
+                                GET
+                            </span>
+
+                            <code>
+                                /api/employees
+                            </code>
+
+                            <p>
+                                Returns successfully processed employees.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                {/* =================================================
+                    09 — TECHNOLOGY STACK
+                ================================================= */}
+
+                <section className="doc-section">
+
+                    <span className="doc-number">
+                        09 — TECHNOLOGY STACK
+                    </span>
+
+                    <h3>
+                        Technologies used
+                    </h3>
+
+                    <div className="tech-stack">
+
+                        <div className="tech-row">
+
+                            <div className="tech-name">
+                                Java
+                            </div>
+
+                            <div className="tech-description">
+                                Core application language and business logic.
+                            </div>
+
+                        </div>
+
+
+                        <div className="tech-row">
+
+                            <div className="tech-name">
+                                Spring Boot
+                            </div>
+
+                            <div className="tech-description">
+                                Application framework and REST API layer.
+                            </div>
+
+                        </div>
+
+
+                        <div className="tech-row">
+
+                            <div className="tech-name">
+                                Spring Batch
+                            </div>
+
+                            <div className="tech-description">
+                                Batch execution, chunk processing and fault tolerance.
+                            </div>
+
+                        </div>
+
+
+                        <div className="tech-row">
+
+                            <div className="tech-name">
+                                PostgreSQL
+                            </div>
+
+                            <div className="tech-description">
+                                Persistent storage for employee and error data.
+                            </div>
+
+                        </div>
+
+
+                        <div className="tech-row">
+
+                            <div className="tech-name">
+                                JDBC
+                            </div>
+
+                            <div className="tech-description">
+                                Database interaction and custom reporting queries.
+                            </div>
+
+                        </div>
+
+
+                        <div className="tech-row">
+
+                            <div className="tech-name">
+                                REST API
+                            </div>
+
+                            <div className="tech-description">
+                                Communication layer between backend and dashboard.
+                            </div>
+
+                        </div>
+
+
+                        <div className="tech-row">
+
+                            <div className="tech-name">
+                                React
+                            </div>
+
+                            <div className="tech-description">
+                                Frontend monitoring dashboard and data visualization.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                {/* =================================================
+                    10 — BENEFITS
+                ================================================= */}
+
+                <section className="doc-section">
+
+                    <span className="doc-number">
+                        10 — BENEFITS
+                    </span>
+
+                    <h3>
+                        Why use a batch-processing approach?
+                    </h3>
+
+                    <div className="benefit-grid">
+
+                        <div className="benefit-card">
                             <span>01</span>
-                            <div>
-                                <strong>Read</strong>
-                                <p>
-                                    Employee records are loaded from
-                                    the input data source.
-                                </p>
-                            </div>
+                            <strong>Time Saving</strong>
+                            <p>
+                                Automates repetitive record-processing
+                                work instead of relying on manual handling.
+                            </p>
                         </div>
 
-
-                        <div className="workflow-step">
+                        <div className="benefit-card">
                             <span>02</span>
-                            <div>
-                                <strong>Process</strong>
-                                <p>
-                                    Records are validated and processed
-                                    using Spring Batch.
-                                </p>
-                            </div>
+                            <strong>Scalability</strong>
+                            <p>
+                                Designed to process large datasets in
+                                manageable chunks.
+                            </p>
                         </div>
 
-
-                        <div className="workflow-step">
+                        <div className="benefit-card">
                             <span>03</span>
-                            <div>
-                                <strong>Handle Errors</strong>
-                                <p>
-                                    Invalid records are skipped safely
-                                    and their error details are captured.
-                                </p>
-                            </div>
+                            <strong>Fault Tolerance</strong>
+                            <p>
+                                Invalid records can be skipped without
+                                unnecessarily stopping the entire process.
+                            </p>
                         </div>
 
-
-                        <div className="workflow-step">
+                        <div className="benefit-card">
                             <span>04</span>
-                            <div>
-                                <strong>Monitor</strong>
-                                <p>
-                                    Execution status, record counts,
-                                    success rate and errors can be monitored.
-                                </p>
-                            </div>
+                            <strong>Traceability</strong>
+                            <p>
+                                Every execution has identifiable status,
+                                counts and error information.
+                            </p>
+                        </div>
+
+                        <div className="benefit-card">
+                            <span>05</span>
+                            <strong>Data Quality</strong>
+                            <p>
+                                Validation prevents invalid employee
+                                records from reaching the main table.
+                            </p>
+                        </div>
+
+                        <div className="benefit-card">
+                            <span>06</span>
+                            <strong>Observability</strong>
+                            <p>
+                                The dashboard provides a centralized view
+                                of processing health and execution history.
+                            </p>
                         </div>
 
                     </div>
 
-                </div>
+                </section>
 
 
-                <div className="about-grid">
+                {/* =================================================
+                    11 — PROTOTYPE PURPOSE
+                ================================================= */}
 
-                    <div className="about-card">
+                <section className="doc-section final-section">
 
-                        <span className="about-card-icon">
-                            ⚙
-                        </span>
+                    <span className="doc-number">
+                        11 — PROTOTYPE PURPOSE
+                    </span>
 
-                        <h3>Spring Boot</h3>
+                    <h3>
+                        What does this prototype demonstrate?
+                    </h3>
 
-                        <p>
-                            Provides the REST APIs and application
-                            infrastructure.
-                        </p>
+                    <p>
+                        This project is primarily a demonstration of how
+                        a traditional data-processing workflow can be
+                        transformed into an automated, fault-tolerant
+                        and observable batch-processing system.
+                    </p>
 
-                    </div>
+                    <p>
+                        Rather than simply inserting employee records
+                        into a database, the prototype demonstrates an
+                        end-to-end processing pipeline involving:
+                    </p>
 
+                    <div className="prototype-points">
 
-                    <div className="about-card">
-
-                        <span className="about-card-icon">
-                            ⚡
-                        </span>
-
-                        <h3>Spring Batch</h3>
-
-                        <p>
-                            Handles chunk-based processing,
-                            execution tracking and fault tolerance.
-                        </p>
-
-                    </div>
-
-
-                    <div className="about-card">
-
-                        <span className="about-card-icon">
-                            ◈
-                        </span>
-
-                        <h3>PostgreSQL</h3>
-
-                        <p>
-                            Stores employee data, batch executions,
-                            summaries and error information.
-                        </p>
+                        <span>CSV ingestion</span>
+                        <span>Data validation</span>
+                        <span>Business calculations</span>
+                        <span>Chunk processing</span>
+                        <span>Fault tolerance</span>
+                        <span>Error persistence</span>
+                        <span>Transaction handling</span>
+                        <span>Database upsert</span>
+                        <span>Execution tracking</span>
+                        <span>REST APIs</span>
+                        <span>Monitoring dashboard</span>
 
                     </div>
 
-
-                    <div className="about-card">
-
-                        <span className="about-card-icon">
-                            ↗
-                        </span>
-
-                        <h3>REST API</h3>
-
-                        <p>
-                            Exposes batch execution, summary,
-                            employee and error information.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div className="about-block">
-
-                    <h3>What can you monitor?</h3>
-
-                    <ul className="feature-list">
-
-                        <li>
-                            <span>✓</span>
-                            Start and monitor batch executions
-                        </li>
-
-                        <li>
-                            <span>✓</span>
-                            View execution history
-                        </li>
-
-                        <li>
-                            <span>✓</span>
-                            Track processed and successful records
-                        </li>
-
-                        <li>
-                            <span>✓</span>
-                            Monitor failed records
-                        </li>
-
-                        <li>
-                            <span>✓</span>
-                            View success rate
-                        </li>
-
-                        <li>
-                            <span>✓</span>
-                            Inspect detailed employee errors
-                        </li>
-
-                    </ul>
-
-                </div>
+                </section>
 
             </div>
 
 
+            {/* =====================================================
+                FOOTER
+            ====================================================== */}
+
             <div className="modal-footer">
 
                 <span>
-                    Employee Batch Processing &nbsp;•&nbsp;
-                    Spring Boot + Spring Batch
+                    Employee Batch Processing
+                    &nbsp; • &nbsp;
+                    Spring Boot
+                    &nbsp; • &nbsp;
+                    Spring Batch
+                    &nbsp; • &nbsp;
+                    PostgreSQL
                 </span>
 
                 <button
                     className="modal-done-btn"
                     onClick={() => setShowAbout(false)}
                 >
-                    Got it
+                    Close Documentation
                 </button>
 
             </div>
@@ -1726,6 +2571,7 @@ function App() {
 
     </div>
 )}
+
 
         </div>
     );
